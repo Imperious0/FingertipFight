@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI scoreText;
+    [SerializeField]
+    private TextMeshProUGUI endGameScoreText;
 
     private int _myScore = 0;
 
@@ -23,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     bool currentlyIdle = true;
     bool gameSuccess = false;
-    public int MyScore { get => _myScore; set { _myScore = value; scoreText.text = "SCORE: " + _myScore; /* Invoke Refresh UI */ } }
+    public int MyScore { get => _myScore; set { _myScore = value; scoreText.text = "SCORE: " + _myScore; endGameScoreText.text = scoreText.text; /* Invoke Refresh UI */ } }
 
     // Start is called before the first frame update
     void Start()
