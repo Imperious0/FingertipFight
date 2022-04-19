@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleParticle: {fileID: 2310392139269934255}
-  _scoreItem: 5
+  _scoreItem: 10
 --- !u!1 &5835067729376055983
 GameObject:
   m_ObjectHideFlags: 0

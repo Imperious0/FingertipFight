@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameSetting
   m_EditorClassIdentifier: 
   _gameSuccessPoint: 100
-  _collectableSize: 10
-  _collectableSpawnRate: 1
+  _collectableSize: 5
+  _collectableSpawnRate: 3
   _playerMovementSpeed: 5
   _playerRotationSpeed: 1

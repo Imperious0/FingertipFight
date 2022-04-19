@@ -17,7 +17,7 @@ public class MotionCapturer : MonoBehaviour
     //Used Cuz FPS Rate > FixedUpdate Frequency
     private void Update()
     {
-        if (Input.GetKey("Escape"))
+        if (Input.GetKey(KeyCode.Escape))
         {
             Application.Quit();
         }
