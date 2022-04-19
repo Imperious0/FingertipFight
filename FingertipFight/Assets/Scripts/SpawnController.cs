@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnController : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class SpawnController : MonoBehaviour
     private Transform rewardHolder;
     [SerializeField]
     private GameObject rewardPrefab;
-
+    [SerializeField]
+    private GameObject endGameUI;
     [SerializeField]
     private GameSettings gSetting;
 
@@ -56,5 +58,13 @@ public class SpawnController : MonoBehaviour
             }
         }
         return collectionScore;
+    }
+    public void showEndGameUI()
+    {
+        endGameUI.SetActive(true);
+    }
+    public void restartGame()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 }

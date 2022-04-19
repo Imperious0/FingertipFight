@@ -25,7 +25,7 @@ android {
     }
 
     aaptOptions {
-		noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(', ')
+        noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(', ')
         ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
     }**SIGN**
 
@@ -60,8 +60,7 @@ android {
 buildscript {
     repositories {
         google()
-	    //jcenter()
-	    mavenCentral()
+        jcenter()
     }
     dependencies {
         // Must be Android Gradle Plugin 4.0.1 or later. For a list of
@@ -74,8 +73,7 @@ buildscript {
 allprojects {
    repositories {
       google()
-	  //jcenter()
-	  mavenCentral()
+      jcenter()
       flatDir {
         dirs 'libs'
       }

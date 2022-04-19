@@ -5,6 +5,8 @@ using UnityEngine;
 public class CollectibleController : MonoBehaviour
 {
     [SerializeField]
+    private ParticleSystem bubbleParticle;
+    [SerializeField]
     private int _scoreItem = 5;
 
     private bool isCollectable = true;
@@ -22,6 +24,7 @@ public class CollectibleController : MonoBehaviour
     public int Collect()
     {
         isCollectable = false;
+        bubbleParticle.Play();
         GetComponent<Renderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
         return _scoreItem;
@@ -48,12 +51,12 @@ public class CollectibleController : MonoBehaviour
         }
         isCollectable = true;
 
-        float xCoord = Random.Range(verticalOffset.x, verticalOffset.y);
-        float zCoord = Random.Range(horizontalOffset.x, horizontalOffset.y);
+        float xCoord = Random.Range(horizontalOffset.x, horizontalOffset.y);
+        float zCoord = Random.Range(verticalOffset.x, verticalOffset.y);
 
         transform.position = new Vector3(xCoord, transform.position.y, zCoord);
         transform.rotation = Quaternion.identity;
-        GetComponent<Renderer>().enabled = true;
-        GetComponent<Collider>().enabled = true;
+        gameObject.GetComponent<Renderer>().enabled = true;
+        gameObject.GetComponent<Collider>().enabled = true;
     }
 }

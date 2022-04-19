@@ -10,10 +10,17 @@ public class MotionCapturer : MonoBehaviour
     private Vector2 movementDir = Vector2.zero;
 
     MotionType currentMotion = MotionType.NONE;
-
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
     //Used Cuz FPS Rate > FixedUpdate Frequency
     private void Update()
     {
+        if (Input.GetKey("Escape"))
+        {
+            Application.Quit();
+        }
         checkMotions();
     }
     private void checkMotions() 
@@ -34,16 +41,14 @@ public class MotionCapturer : MonoBehaviour
             }
             else
             {
+                movementDir = Vector2.zero;
                 currentMotion = MotionType.NONE;
-                beginTouch = Vector2.zero;
-                currentTouch = Vector2.zero;
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
+            movementDir = Vector2.zero;
             currentMotion = MotionType.NONE;
-            beginTouch = Vector2.zero;
-            currentTouch = Vector2.zero;
         }
 #else
         if(Input.touchCount > 0)
@@ -61,10 +66,11 @@ public class MotionCapturer : MonoBehaviour
             if(t.phase == TouchPhase.Canceled || t.phase == TouchPhase.Ended)
             {
                 currentMotion = MotionType.NONE;
+                movementDir = Vector2.zero;
                 return;
             }
 
-            Vector2 tmpDir = currentTouch - beginTouch;
+            Vector2 tmpDir = beginTouch - currentTouch;
 
             if(tmpDir.magnitude > 0.1)
             {
@@ -73,8 +79,7 @@ public class MotionCapturer : MonoBehaviour
                 
             }else{
                 currentMotion = MotionType.NONE;
-                beginTouch = Vector2.zero;
-                currentTouch = Vector2.zero;
+                movementDir = Vector2.zero;
             }
         }
 #endif
