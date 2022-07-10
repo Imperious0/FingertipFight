@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,11 +27,6 @@ public class SpawnController : MonoBehaviour
         initializeCollection();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void initializeCollection()
     {
         rewardCollection = new List<GameObject>();

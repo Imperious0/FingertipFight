@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -28,16 +26,11 @@ public class PlayerController : MonoBehaviour
     public int MyScore { get => _myScore; set { _myScore = value; scoreText.text = "SCORE: " + _myScore; endGameScoreText.text = scoreText.text; /* Invoke Refresh UI */ } }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void FixedUpdate()
     {
         if (gameSuccess)

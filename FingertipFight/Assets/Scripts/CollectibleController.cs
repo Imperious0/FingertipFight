@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer)), RequireComponent(typeof(Collider))]
 public class CollectibleController : MonoBehaviour
 {
     [SerializeField]
@@ -9,24 +9,22 @@ public class CollectibleController : MonoBehaviour
     [SerializeField]
     private int _scoreItem = 5;
 
-    private bool isCollectable = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Renderer m_Renderer;
+    private Collider m_Collider;
 
-    // Update is called once per frame
-    void Update()
+    private bool isCollectable = true;
+
+    private void Awake()
     {
-        
+        m_Renderer = GetComponent<Renderer>();
+        m_Collider = GetComponent<Collider>();
     }
     public int Collect()
     {
         isCollectable = false;
         bubbleParticle.Play();
-        GetComponent<Renderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+        m_Renderer.enabled = false;
+        m_Collider.enabled = false;
         return _scoreItem;
     }
     public void Respawn(Vector3 verticalOffset, Vector3 horizontalOffset, float respawnDuration)
@@ -56,7 +54,7 @@ public class CollectibleController : MonoBehaviour
 
         transform.position = new Vector3(xCoord, transform.position.y, zCoord);
         transform.rotation = Quaternion.identity;
-        gameObject.GetComponent<Renderer>().enabled = true;
-        gameObject.GetComponent<Collider>().enabled = true;
+        m_Renderer.enabled = true;
+        m_Collider.enabled = true;
     }
 }
